@@ -1,0 +1,16 @@
+﻿  polygonScan.cpp
+F:\CodeData\图形学\PolygonScan_OpenGL\polygonScan.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+F:\CodeData\图形学\PolygonScan_OpenGL\datastruct.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+F:\CodeData\图形学\PolygonScan_OpenGL\polygonScan.cpp(35): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+F:\CodeData\图形学\PolygonScan_OpenGL\polygonScan.cpp(37): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+F:\CodeData\图形学\PolygonScan_OpenGL\polygonScan.cpp(40): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+F:\CodeData\图形学\PolygonScan_OpenGL\polygonScan.cpp(44): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+F:\CodeData\图形学\PolygonScan_OpenGL\polygonScan.cpp(53): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+F:\CodeData\图形学\PolygonScan_OpenGL\polygonScan.cpp(73): warning C4244: “参数”: 从“float”转换到“GLint”，可能丢失数据
+F:\CodeData\图形学\PolygonScan_OpenGL\polygonScan.cpp(74): warning C4244: “参数”: 从“float”转换到“GLint”，可能丢失数据
+F:\CodeData\图形学\PolygonScan_OpenGL\polygonScan.cpp(101): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+F:\CodeData\图形学\PolygonScan_OpenGL\polygonScan.cpp(115): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+F:\CodeData\图形学\PolygonScan_OpenGL\polygonScan.cpp(126): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+F:\CodeData\图形学\PolygonScan_OpenGL\polygonScan.cpp(185): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+F:\CodeData\图形学\PolygonScan_OpenGL\polygonScan.cpp(187): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  PolygonScan_OpenGL.vcxproj -> F:\CodeData\图形学\PolygonScan_OpenGL\x64\Debug\PolygonScan_OpenGL.exe

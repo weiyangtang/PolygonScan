@@ -1,3 +1,4 @@
+#pragma warning(disable:4996) //很多函数vs认为不安全,无法运行
 #include<iostream>
 #include<fstream>//读写文件
 #include<string>
@@ -6,7 +7,8 @@
 #include"datastruct.h"
 
 /*
-利用OpenGL实现橡皮筋算法
+利用OpenGL实现橡皮筋算法和多边形扫描填充算法
+
 */
 
 //窗口的宽度和高度
