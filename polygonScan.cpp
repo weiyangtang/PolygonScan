@@ -1,4 +1,6 @@
 #include<iostream>
+#include<fstream>//读写文件
+#include<string>
 #include<vector>
 #include<gl/glut.h>
 #include"datastruct.h"
@@ -116,7 +118,7 @@ void lineSegment() {
 		glEnd();
 		//cout << p.size() - 1;
 	}
-	
+
 
 	//画鼠标动态移动的连线
 	j = p.size() - 1;//最后一个点
@@ -174,6 +176,103 @@ void myPassiveMotion(int x, int y) {//鼠标移动事件响应函数
 	glutPostRedisplay();
 }
 
+/*将已经画好了的多边形保存到文件中*/
+void printPolygon() {
+	ofstream out;
+	out.open("data.txt", ios::trunc);
+	int polygonCount = s.size();
+	for (int i = 0; i < polygonCount; i++) {
+		int pointCount = s[i].p.size();
+		for (int j = 0; j < pointCount; j++) {
+			cout << s[i].p[j].x << " " << s[i].p[j].y << "\t";
+			out << s[i].p[j].x << " " << s[i].p[j].y << " ";
+		}
+		out << endl;
+		cout << endl;
+	}
+	out.close();
+
+}
+/*split函数*/
+vector<string> split(const string & str, const string & delim) {
+	vector<string> res;
+	if ("" == str) return res;
+	//先将要切割的字符串从string类型转换为char*类型  
+	char* strs = new char[str.length() + 1]; //不要忘了  
+	strcpy(strs, str.c_str());
+
+	char* d = new char[delim.length() + 1];
+	strcpy(d, delim.c_str());
+
+	char* p = strtok(strs, d);
+	while (p) {
+		string s = p; //分割得到的字符串转换为string类型  
+		res.push_back(s); //存入结果数组  
+		p = strtok(NULL, d);
+	}
+
+	return res;
+}
+
+/*载入上次画好的多边形*/
+void loadPolygon() {
+	glClear(GL_COLOR_BUFFER_BIT);
+	glFlush();
+	s.clear();//清空已有图形
+	p.clear();
+
+	ifstream in;
+	in.open("data.txt", ios::in);
+	string line;
+	while (getline(in, line))
+	{
+		vector<string> points = split(line, " ");
+		point pointTemp;
+		polygon polygonTemp;
+		for (int i = 1; i < points.size(); i += 2) {
+			cout << points[i - 1] << " " << points[i] << endl;
+			pointTemp.x = atoi(points[i - 1].c_str());
+			pointTemp.y = atoi(points[i].c_str());
+			polygonTemp.p.push_back(pointTemp);
+		}
+		s.push_back(polygonTemp);
+		polygonTemp.p.clear();
+	}
+	in.close();
+
+	//重新填充上次图形
+	for (int i = 0; i < s.size(); i++)
+		polygonScan(s[i].p);
+
+
+
+}
+
+
+
+void KeyBoards(unsigned char key, int x, int y)
+{
+	switch (key)
+	{
+	case 's':
+		cout << "save" << endl;
+		printPolygon();
+		break;
+	case'c':
+		cout << "clear" << endl;
+		glClear(GL_COLOR_BUFFER_BIT);
+		glFlush();
+		s.clear();
+		p.clear();
+		break;
+	case 'l':
+		loadPolygon();
+		break;
+	}
+
+}
+
+
 
 
 
@@ -193,6 +292,7 @@ int main(int argc, char** agrv) {
 	glutMouseFunc(myMouse);//鼠标点击监控,若被点击则调用myMouse
 	glutDisplayFunc(lineSegment);
 	glutPassiveMotionFunc(myPassiveMotion);
+	glutKeyboardFunc(KeyBoards);  //注册键盘事件
 	glutMainLoop();//程序循环进行
 	//glutDisplayFunc(&myDisplay);
 
